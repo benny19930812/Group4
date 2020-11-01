@@ -38,7 +38,7 @@
 	<div class="container">
 
 		<h1>後臺管理系統</h1>
-			<form method="GET" action="SearchAll.controller">
+			<form method="GET" action="SearchAll.ctrl">
 			<input type=TEXT name="searchString" class="" placeholder=""
 				id="search"> <input type=SUBMIT value="查詢" class=""
 				id="searchbut"><br><br>
@@ -55,7 +55,7 @@
 
 			<p>總筆數:${totalnum} 每頁筆數:${PerPage} 總頁數:${totalPages} 第幾頁:${page}</p>
 			<!-- 頂部按鈕	 -->
-			<form method="GET" action="Category.controller">
+			<form method="GET" action="Category.ctrl">
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">

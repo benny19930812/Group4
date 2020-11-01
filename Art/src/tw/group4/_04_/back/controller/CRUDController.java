@@ -25,6 +25,7 @@ import tw.group4._04_.back.model.ShowBeanService;
 
 @Controller
 public class CRUDController {
+	
 	// 標註@Autowired，注入dependency
 	@Autowired
 	private ShowBean showBean;
@@ -37,7 +38,8 @@ public class CRUDController {
 	// @SessionAttributes(names = {"name"})可以將參數設為session
 	// Action導到的名稱
 
-	@RequestMapping(path = "/SearchAll.controller", method = RequestMethod.GET)
+	
+	@RequestMapping(path = "/SearchAll.ctrl", method = RequestMethod.GET)
 	public String processSearchAll(String searchString, String p, Model model) {
 
 		System.out.println("searchString=" + searchString);
@@ -101,7 +103,7 @@ public class CRUDController {
 		return "04/SearchAll";
 	}
 
-	@RequestMapping(path = "/Category.controller", method = RequestMethod.GET)
+	@RequestMapping(path = "/Category.ctrl", method = RequestMethod.GET)
 	public String processCategorySearch(String category, String p, Model model) {
 
 		System.out.println("category=" + category);
@@ -125,7 +127,7 @@ public class CRUDController {
 				map.put("title", titleString);
 				map.put("site", siteString);
 				// 存入map集合中
-				System.out.println(map);
+//				System.out.println(map);
 				list.add(map);// 將map集合放入list集合
 //					System.out.println("放入集合");
 
