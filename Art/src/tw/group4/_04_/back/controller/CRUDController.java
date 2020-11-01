@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,12 @@ import tw.group4._04_.back.model.ShowBeanService;
 
 @Controller
 public class CRUDController {
+	//標註@Autowired，注入dependency
+	@Autowired
+	private ShowBean showBean;
+
+	@Autowired
+	private ShowBeanService showBeanService;
 	
     //@ModelAttribute設定傳入參數
     //Model 類似request的功能
@@ -53,12 +60,12 @@ public class CRUDController {
 		
 //
 		System.out.println("here");
-		ShowBeanService showService = new ShowBeanService();
 //		ShowBeanDAO SDao = new ShowBeanDAO();
 		
 		
-		List<ShowBean> showList = showService.selectAll();
 		System.out.println("here2");
+		List<ShowBean> showList = showBeanService.selectAll();
+		System.out.println("here3");
 		for (ShowBean showBean : showList) {
 			String categoryString = Integer.toString(showBean.getACT_CATEGORY());
 
@@ -115,7 +122,7 @@ public class CRUDController {
 		int listsize = list.size();
 		System.out.println("共" + listsize + "筆資料");
 
-		return "04/SearchAll";
+		return "04/categorySearch";
 	}
 
 	@RequestMapping(path = "/aaaaaa", method = RequestMethod.GET)

@@ -6,21 +6,23 @@ import java.util.List;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 
 @Service("showbeanService")
+@Transactional
 public class ShowBeanService {
 	
-	@Autowired 
+	
 	private ShowBeanDAO SDao;
 	
-	public ShowBeanService() {
-		
+	public ShowBeanService() {		
 	}
-	public ShowBeanService(Session session) {
-		SDao = new ShowBeanDAO();
-	}
+//	public ShowBeanService(Session session) {
+//		SDao = new ShowBeanDAO();
+//	}
+	@Autowired 
 	public ShowBeanService(ShowBeanDAO SDao) {
 		this.SDao = SDao;
 	}

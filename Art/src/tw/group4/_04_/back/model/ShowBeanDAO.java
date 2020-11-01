@@ -23,10 +23,9 @@ public class ShowBeanDAO {
 	private SessionFactory sessionFacory;
 	private Session session;
 	
-	public ShowBeanDAO() {
-	
-	}
-	
+//	public ShowBeanDAO() {
+//	
+//	}	
 	@Autowired 
 	public ShowBeanDAO(@Qualifier("sessionFactory") SessionFactory sessionFacory) {
 		this.sessionFacory = sessionFacory;
@@ -34,7 +33,7 @@ public class ShowBeanDAO {
 
 //	@Autowired 
 //	public ShowBeanDAO(Session session) {
-//		this.session = session;
+//		this.sessionFacory = sessionFacory;
 //	}
 	
 
