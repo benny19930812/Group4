@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("showbeanService")
-@Transactional
+
 public class ShowBeanService {
 	
 	

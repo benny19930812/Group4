@@ -12,7 +12,7 @@
 		<br>
 		<br>
 	<h1>活動新增</h1>
-	<form method=GET action="<c:url value='/Insert'/>">
+	<form method=GET action="<c:url value='insert.ctrl'/>">
 
 		<div class="container">
 			<p></p>
