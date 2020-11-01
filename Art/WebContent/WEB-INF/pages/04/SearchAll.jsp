@@ -38,13 +38,13 @@
 	<div class="container">
 
 		<h1>後臺管理系統</h1>
-			<form method=POST action="SearchAll.controller">
+			<form method="GET" action="SearchAll.controller">
 			<input type=TEXT name="searchString" class="" placeholder=""
 				id="search"> <input type=SUBMIT value="查詢" class=""
 				id="searchbut"><br><br>
 			</form>
-			<button type="button" class="btn btn-info" value="button"
-				onclick="location.href='_04_AAARThibernate/InsertAction.jsp'">新增活動</button>
+			<button type="button" class="btn btn-info" value="button" onclick="location.href='insert'">新增活動</button>
+			
 			<c:set var="totalnum" value="${requestScope.totalnum}" />
 			<c:set var="PerPage" value="${requestScope.PerPage}" />
 			<c:set var="totalPages" value="${requestScope.totalPages}" />
@@ -55,7 +55,7 @@
 
 			<p>總筆數:${totalnum} 每頁筆數:${PerPage} 總頁數:${totalPages} 第幾頁:${page}</p>
 			<!-- 頂部按鈕	 -->
-			<form method=GET action="<c:url value='/AAArtAction'/>">
+			<form method="GET" action="Category.controller">
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">
@@ -101,7 +101,7 @@
 						<td>${show.title}</td>
 						<td>${show.site}</td>
 
-						<form name="order" action="<c:url value='/Update'/>" method="get">
+						<form name="order" action="update1.ctrl" method="get">
 							<td>
 								<button name="" type="submit" value="" class="btn btn-info">修改</button>
 							</td>

@@ -23,10 +23,12 @@ public class ShowBeanDAO {
 	private SessionFactory sessionFacory;
 	private Session session;
 	
-	public ShowBeanDAO() {
-	
-	}
-	
+//	public ShowBeanDAO() {
+//	
+//	}	
+	//DAO一叫出來就幫忙取完session了
+	//現在都在DAO層用SessionFactory幫忙做事
+	//不再傳遞session一層一層下去
 	@Autowired 
 	public ShowBeanDAO(@Qualifier("sessionFactory") SessionFactory sessionFacory) {
 		this.sessionFacory = sessionFacory;
@@ -34,7 +36,7 @@ public class ShowBeanDAO {
 
 //	@Autowired 
 //	public ShowBeanDAO(Session session) {
-//		this.session = session;
+//		this.sessionFacory = sessionFacory;
 //	}
 	
 
