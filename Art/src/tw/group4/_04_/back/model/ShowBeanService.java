@@ -42,9 +42,21 @@ public class ShowBeanService {
 		return SDao.selectAll();
 	}
 	
+	public List<ShowBean>selectAll_startdate() {	
+		return SDao.selectAll_startdate();
+	}
+	
 
 	public List<ShowBean> selectAll2() {	
 		return SDao.selectAll2();
+	}
+	
+	public List<ShowBean> selectAll3(int pageNo,int category) {	
+		return SDao.selectAll3(pageNo,category);
+	}
+	
+	public int getTotalPages() {
+		return SDao.getTotalPages();
 	}
 
 

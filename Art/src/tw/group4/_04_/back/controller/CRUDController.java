@@ -1,5 +1,6 @@
 package tw.group4._04_.back.controller;
 
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +26,7 @@ import tw.group4._04_.back.model.ShowBeanService;
 
 @Controller
 public class CRUDController {
-	
+
 	// 標註@Autowired，注入dependency
 	@Autowired
 	private ShowBean showBean;
@@ -33,14 +34,14 @@ public class CRUDController {
 	@Autowired
 	private ShowBeanService showBeanService;
 
+	int pageNo = 0;
 	// @ModelAttribute設定傳入參數
 	// Model 類似request的功能
 	// @SessionAttributes(names = {"name"})可以將參數設為session
 	// Action導到的名稱
 
-	
 	@RequestMapping(path = "/SearchAll.ctrl", method = RequestMethod.GET)
-	public String processSearchAll(String searchString, String p, Model model) {
+	public String processSearchAll(String searchString, String page, Model model) {
 
 		System.out.println("searchString=" + searchString);
 		List<Map> list = new ArrayList<Map>();
@@ -64,13 +65,12 @@ public class CRUDController {
 //			System.out.println("放入集合");
 
 //				String p = request.getParameter("page");
-			int page;
+			int page2;
 			try {
 				// 當前頁數
-
-				page = Integer.valueOf(p);
+				page2 = Integer.valueOf(page);
 			} catch (NumberFormatException e) {
-				page = 1;
+				page2 = 1;
 			}
 			// 搜尋後總活動數
 			int totalnum = list.size();
@@ -80,7 +80,7 @@ public class CRUDController {
 			// 總頁數
 			int totalPages = totalnum % PerPage == 0 ? totalnum / PerPage : totalnum / PerPage + 1;
 			// 本頁起始使用者序號
-			int beginIndex = (page - 1) * PerPage;
+			int beginIndex = (page2 - 1) * PerPage;
 			// 本頁末尾使用者序號的下一個
 			int endIndex = beginIndex + PerPage;
 			if (endIndex > totalnum)
@@ -92,8 +92,9 @@ public class CRUDController {
 			model.addAttribute("totalPages", totalPages);
 			model.addAttribute("beginIndex", beginIndex);
 			model.addAttribute("endIndex", endIndex);
-			model.addAttribute("page", page);
+			model.addAttribute("page", page2);
 			model.addAttribute("category", category);
+			model.addAttribute("searchString", searchString);
 
 			model.addAttribute("key_list", list);// 将list放入request中
 		}
@@ -104,7 +105,7 @@ public class CRUDController {
 	}
 
 	@RequestMapping(path = "/Category.ctrl", method = RequestMethod.GET)
-	public String processCategorySearch(String category, String p, Model model) {
+	public String processCategorySearch(String category, String page, Model model) {
 
 		System.out.println("category=" + category);
 //		System.out.println("page="+p);
@@ -115,7 +116,7 @@ public class CRUDController {
 
 		for (ShowBean showBean : showList) {
 			String categoryString = Integer.toString(showBean.getACT_CATEGORY());
-
+//			System.out.println(categoryString);
 			int noint = showBean.getACT_NO();
 			String titleString = showBean.getACT_TITLE();
 			String siteString = showBean.getACT_LOCATION_NAME();
@@ -132,13 +133,12 @@ public class CRUDController {
 //					System.out.println("放入集合");
 
 //				String p = request.getParameter("page");
-				int page;
+				int page2;
 				try {
 					// 當前頁數
-
-					page = Integer.valueOf(p);
+					page2 = Integer.valueOf(page);
 				} catch (NumberFormatException e) {
-					page = 1;
+					page2 = 1;
 				}
 				// 搜尋後總活動數
 				int totalnum = list.size();
@@ -148,7 +148,7 @@ public class CRUDController {
 				// 總頁數
 				int totalPages = totalnum % PerPage == 0 ? totalnum / PerPage : totalnum / PerPage + 1;
 				// 本頁起始使用者序號
-				int beginIndex = (page - 1) * PerPage;
+				int beginIndex = (page2 - 1) * PerPage;
 				// 本頁末尾使用者序號的下一個
 				int endIndex = beginIndex + PerPage;
 				if (endIndex > totalnum)
@@ -160,7 +160,7 @@ public class CRUDController {
 				model.addAttribute("totalPages", totalPages);
 				model.addAttribute("beginIndex", beginIndex);
 				model.addAttribute("endIndex", endIndex);
-				model.addAttribute("page", page);
+				model.addAttribute("page", page2);
 				model.addAttribute("category", category);
 
 				model.addAttribute("key_list", list);// 将list放入request中
@@ -264,6 +264,64 @@ public class CRUDController {
 		showBeanService.insert(showBean);
 
 		return "04/categorySearch";
+	}
+
+	//分類查詢+分頁
+	@RequestMapping(path = "/Category2.ctrl", method = RequestMethod.GET)
+	public String processCategorySearch2(int category,String p, Model model) {
+
+		// 設定頁數
+
+		int pageNo;
+		try {
+			// 當前頁數
+			pageNo = Integer.valueOf(p);
+		} catch (NumberFormatException e) {
+			pageNo = 1;
+		}
+		System.out.println("pageNo" + pageNo);
+		System.out.println("category" + category);
+
+		List<Map> list = new ArrayList<Map>();
+
+		List<ShowBean> showList = showBeanService.selectAll3(pageNo, category);
+		for (ShowBean showBean : showList) {
+			String categoryString = Integer.toString(showBean.getACT_CATEGORY());
+			System.out.println(categoryString);
+			int noint = showBean.getACT_NO();
+			String titleString = showBean.getACT_TITLE();
+			String siteString = showBean.getACT_LOCATION_NAME();
+
+			Map map = new HashMap();
+			map.put("no", noint);
+			map.put("title", titleString);
+			map.put("site", siteString);
+			// 存入map集合中
+			System.out.println(map);
+			list.add(map);// 將map集合放入list集合
+//						System.out.println("放入集合");
+
+			int totalPage = showBeanService.getTotalPages();
+
+			List<Integer> totalPages = new ArrayList<Integer>();
+			for (int i = 1; i <= totalPage; i++) {
+				totalPages.add(i);
+			}
+
+			int PerPage = 100;
+
+			model.addAttribute("PerPage", PerPage);
+			model.addAttribute("category", category);
+			model.addAttribute("key_list", list);// 将list放入request中
+			model.addAttribute("pageNo", String.valueOf(pageNo));
+			model.addAttribute("totalPages", totalPage);
+			model.addAttribute("pages", totalPages);
+
+		}
+		int listsize = list.size();
+		System.out.println("共" + listsize + "筆資料");
+
+		return "04/index2";
 	}
 
 }

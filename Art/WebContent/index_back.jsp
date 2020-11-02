@@ -41,7 +41,7 @@
 		<h1>後臺管理系統:修改活動資訊</h1>
 <%-- 		<form method=GET action="<c:url value='/SearchAll'/>"> --%>
 		<form method=GET action="SearchAll.ctrl">
-<%-- 			<Input type='hidden' name='page' value='${page}'> --%>
+			<Input type='hidden' name='page' value='${page}'>
 			<input type=TEXT name="searchString" class="" placeholder=""id="search"> 
 			<input type=SUBMIT value="查詢" class="btn btn-info" id="searchbut"><br><br>
 			</form>

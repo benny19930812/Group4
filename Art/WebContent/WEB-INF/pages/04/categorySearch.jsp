@@ -53,8 +53,7 @@
 			<c:set var="beginIndex" value="${requestScope.beginIndex}" />
 			<c:set var="endIndex" value="${requestScope.endIndex}" />
 			<c:set var="page" value="${requestScope.page}" />
-			<c:set var="currentPage"
-				value="${requestScope.key_list.subList(beginIndex,endIndex)}" />
+			<c:set var="currentPage" value="${requestScope.key_list.subList(beginIndex,endIndex)}" />
 
 			<p>總筆數:${totalnum} 每頁筆數:${PerPage} 總頁數:${totalPages} 目前在第${page}頁</p>
 			<!-- 頂部按鈕	 -->
@@ -141,20 +140,20 @@
 				<div class="btn-group mr-2" role="group" aria-label="First group">
 					<ul class="page">
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/AAArtAction?page=1&category=${category}"/>'">首頁</button>
+							onclick="location.href='<c:url value="/Category.ctrl?page=1&category=${category}"/>'">首頁</button>
  
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/AAArtAction?page=${page-1>1?page-1:1}&category=${category}"/>'">&laquo;</button>
+							onclick="location.href='<c:url value="/Category.ctrl?page=${page-1>1?page-1:1}&category=${category}"/>'">&laquo;</button>
 
 						<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 							<c:set var="active" value="${loop.index==page?'active':''}" />
 							<button type="button" class="btn btn-secondary"
-								onclick="location.href='<c:url value="/AAArtAction?page=${loop.index}&category=${category}"/>'">${loop.index}</button>
+								onclick="location.href='<c:url value="/Category.ctrl?page=${loop.index}&category=${category}"/>'">${loop.index}</button>
 						</c:forEach>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/AAArtAction?page=${page+1<totalPages?page+1:totalPages}&category=${category}"/>'">&raquo;</button>
+							onclick="location.href='<c:url value="/Category.ctrl?page=${page+1<totalPages?page+1:totalPages}&category=${category}"/>'">&raquo;</button>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/AAArtAction?page=${totalPages}&category=${category}"/>'">最後頁</button>
+							onclick="location.href='<c:url value="/Category.ctrl?page=${totalPages}&category=${category}"/>'">最後頁</button>
 				</div>
 
 			</div>
