@@ -46,6 +46,11 @@ public class ShowBeanService {
 		return SDao.selectAll_startdate();
 	}
 	
+	public List<ShowBean> selectAll_enddate() {
+		return SDao.selectAll_enddate();
+	}
+	
+	
 
 	public List<ShowBean> selectAll2() {	
 		return SDao.selectAll2();

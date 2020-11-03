@@ -98,7 +98,9 @@
    
 <div class="form-group">
 <div class="bodydiv">
+
    <img src="images/logo.jpg" alt="logo" title="logo" class="logo"><br>
+   
 <form method=GET action="SearchAll_.ctrl" >
 
 <!-- 隱藏屬性 用來傳遞頁數 -->

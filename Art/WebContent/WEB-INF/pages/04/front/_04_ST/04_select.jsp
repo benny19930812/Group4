@@ -11,25 +11,21 @@
 .page li {
 	display: inline;
 }
-
-.no {
-	width: 30px;
-}
-
-.title {
-	width: 400px;
-}
-
-.site {
+.date {
 	width: 200px;
 }
 
-.date {
-	width: 100px;
+.title {
+	width: 700px;
 }
 
+.site {
+	width: 300px;
+}
+
+
 .buy {
-	width: 10px;
+	width:50px;
 }
 </style>
 </head>
@@ -37,7 +33,7 @@
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 <div class="container">
 <!-- 頂部按鈕	 -->
-<form method=GET action="Category_Front.ctrl">
+<form method=GET action="SearchAll_.ctrl">
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">
@@ -91,7 +87,7 @@
 
 	<table  class="table table-bordered">
 		<tr>
-			<th class="no">開始日期</th>
+			<th class="date">日期</th>
 			<th class="title">節目名稱</th>
 			<th class="site">場地</th>
 <!-- 			<th class="date">日期</th> -->
@@ -103,7 +99,7 @@
 			<tr>
 				<!-- 傳送訂單資訊 -->
 				<form name="order" action="./04_Booking.jsp" method="get">
-					<td>${show.startdate}</td>
+					<td>${show.startdate} ~ ${show.enddate}</td>
 					<td>${show.title}</td>
 					<td>${show.site}</td>
 <%-- 					<td>${show.date}</td> --%>

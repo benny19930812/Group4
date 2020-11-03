@@ -1,8 +1,13 @@
 package tw.group4._04_.back.controller;
 
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import tw.group4._04_.back.model.ShowBean;
 import tw.group4._04_.back.model.ShowBeanService;
@@ -49,7 +55,7 @@ public class CRUDController {
 //		ShowBeanService showService = new ShowBeanService();
 		List<ShowBean> showList = showBeanService.find(searchString);
 		for (ShowBean showBean : showList) {
-			String category = Integer.toString(showBean.getACT_CATEGORY());
+//			String category = Integer.toString(showBean.getACT_CATEGORY());
 
 			int noint = showBean.getACT_NO();
 			String titleString = showBean.getACT_TITLE();
@@ -93,7 +99,7 @@ public class CRUDController {
 			model.addAttribute("beginIndex", beginIndex);
 			model.addAttribute("endIndex", endIndex);
 			model.addAttribute("page", page2);
-			model.addAttribute("category", category);
+//			model.addAttribute("category", category);
 			model.addAttribute("searchString", searchString);
 
 			model.addAttribute("key_list", list);// 将list放入request中
@@ -173,22 +179,24 @@ public class CRUDController {
 	}
 
 	@RequestMapping(path = "/delete.ctrl", method = RequestMethod.GET)
-	public String processDelete(int actno, String page, String category, String searchString) {
+	public String processDelete(int actno, String page, String category, String searchString) throws UnsupportedEncodingException {
 
+//		response.setContentType("text/html;charset=UTF-8");
 		System.out.println(actno);
 		System.out.println(searchString);
+		System.out.println(category);
 		showBeanService.delete(actno);
 
 		// 導回前頁
-//		if (category.equals("")) {
-//			return"form";
-//			response.sendRedirect("/ArtCMS/SearchAll?page="+ page + "&searchString="+URLEncoder.encode(searchString,"utf-8"));
-//			System.out.println("&searchString="+searchString);
-//		}
-//		else {
-//			response.sendRedirect("/ArtCMS/AAArtAction?page=" + page + "&category=" + category);
-//		}
-		return "04/categorySearch";
+		if (category.equals("")) {
+			//URLEncoder.encode中文亂碼解決
+			return  "redirect:/SearchAll.ctrl?page=" + page + "&searchString=" + URLEncoder.encode(searchString,"utf-8");		
+		}
+		else {		
+			return  "redirect:/Category.ctrl?page=" + page + "&category=" + category;
+		}
+//		return "04/categorySearch";
+		
 	}
 
 	@RequestMapping(path = "/update1.ctrl", method = RequestMethod.GET)
@@ -209,10 +217,12 @@ public class CRUDController {
 		String mainunit = showBean.getACT_MAINUNIT();
 		String showunit = showBean.getACT_SHOWUNIT();
 		String description = showBean.getACT_DESCRIPTION();
-		String startdate = showBean.getACT_STARTDATE();
-
+		String startdate = showBean.getACT_STARTDATE();		
 		String enddate = showBean.getACT_ENDDATE();
-
+		//將DB 日期字串由yyyy/mm/dd改為yyyy-mm-dd
+		String startdate2 =startdate.replace("/","-");
+		String enddate2 =enddate.replace("/","-");
+		
 		model.addAttribute("actno", actno);
 		model.addAttribute("title", title);
 		model.addAttribute("category", category2);
@@ -221,6 +231,8 @@ public class CRUDController {
 		model.addAttribute("mainunit", mainunit);
 		model.addAttribute("showunit", showunit);
 		model.addAttribute("description", description);
+		model.addAttribute("startdate", startdate2);
+		model.addAttribute("enddate", enddate2);
 		model.addAttribute("page", page);
 		model.addAttribute("searchString", searchString);
 
@@ -229,16 +241,15 @@ public class CRUDController {
 
 	@RequestMapping(path = "/update2.ctrl", method = RequestMethod.GET)
 	public String processUpdate2(int actno, String title, int category, String location, String locationName,
-			String mainunit, String showunit, String description, String startdate, String enddate) {
+			String mainunit, String showunit, String description, String startdate, String enddate , String page) {
 
-//		System.out.println(actno);
-//		System.out.println(searchString);
-//		System.out.println(page);
+		String startdate2 =startdate.replace("-", "/");
+		String enddate2 =enddate.replace("-", "/");
+		
+		showBeanService.update(actno, title, category, location, locationName, mainunit, showunit,
+				description, startdate2, enddate2);
 
-		ShowBean showBean = showBeanService.update(actno, title, category, location, locationName, mainunit, showunit,
-				description, startdate, enddate);
-
-		return "04/categorySearch";
+			return  "redirect:/Category.ctrl?page=" + page + "&category=" + category;
 	}
 
 	@RequestMapping(path = "/insert", method = RequestMethod.GET)
@@ -249,8 +260,13 @@ public class CRUDController {
 
 	@RequestMapping(path = "/insert.ctrl", method = RequestMethod.GET)
 	public String processInsert(String title, int category, String location, String locationName, String mainunit,
-			String showunit, String description, String startdate, String enddate) {
-
+			String showunit, String description,String startdate, String enddate) throws ParseException {
+//		System.out.println("startdate"+startdate);
+		String startdate2 =startdate.replace("-", "/");
+		String enddate2 =enddate.replace("-", "/");
+//		System.out.println(startdate2);
+		
+		
 		showBean.setACT_TITLE(title);
 		showBean.setACT_CATEGORY(category);
 		showBean.setACT_LOCATION(location);
@@ -258,8 +274,8 @@ public class CRUDController {
 		showBean.setACT_MAINUNIT(mainunit);
 		showBean.setACT_SHOWUNIT(showunit);
 		showBean.setACT_DESCRIPTION(description);
-		showBean.setACT_STARTDATE(startdate);
-		showBean.setACT_ENDDATE(enddate);
+		showBean.setACT_STARTDATE(startdate2);
+		showBean.setACT_ENDDATE(enddate2);
 
 		showBeanService.insert(showBean);
 

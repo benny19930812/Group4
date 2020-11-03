@@ -17,7 +17,7 @@
 }
 
 .title {
-	width: 400px;
+	width: 550px;
 }
 
 .site {
@@ -111,7 +111,7 @@
 							<Input type='hidden' name='searchString' value='${searchString}'>
 						</form>
 
-						<form name="order" action="<c:url value='/Delete'/>" method="get">
+						<form name="order" action="delete.ctrl"  method="get">
 							<td>
 								<button name="actno" type="submit" value=${show.no
 									} class="btn btn-info" onclick="return del()">刪除</button></td>

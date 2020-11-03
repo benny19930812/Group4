@@ -100,11 +100,11 @@
 				</tr>
 				<tr>
 					<td>活動開始日</td>
-					<td><input type="date" name="startdate" value="${requestScope.startdate}"></td>
+					<td><input type="date" name="startdate" value="${requestScope.startdate}" id="startdate"></td>
 				</tr>
 				<tr>
 					<td>活動結束日</td>
-					<td><input type="date" name="enddate" value="${requestScope.enddate}"></td>
+					<td><input type="date" name="enddate" value="${requestScope.enddate}" id="enddate"></td>
 				</tr>
 				<tr>
 					<td>活動描述</td>
@@ -129,7 +129,10 @@
 			}
 		}
 
-
+		document.getElementById("startdate").onchange = function () {
+		    var input = document.getElementById("enddate");
+		    input.setAttribute("min", this.value);
+		}
 	</script>
 </body>
 </html>
