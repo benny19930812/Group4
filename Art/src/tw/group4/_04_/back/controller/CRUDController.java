@@ -46,7 +46,7 @@ public class CRUDController {
 	// @SessionAttributes(names = {"name"})可以將參數設為session
 	// Action導到的名稱
 
-	@RequestMapping(path = "/SearchAll.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/SearchAll.ctrl", method = RequestMethod.GET)
 	public String processSearchAll(String searchString, String page, Model model) {
 
 		System.out.println("searchString=" + searchString);
@@ -110,7 +110,7 @@ public class CRUDController {
 		return "04/SearchAll";
 	}
 
-	@RequestMapping(path = "/Category.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Category.ctrl", method = RequestMethod.GET)
 	public String processCategorySearch(String category, String page, Model model) {
 
 		System.out.println("category=" + category);
@@ -178,7 +178,7 @@ public class CRUDController {
 		return "04/categorySearch";
 	}
 
-	@RequestMapping(path = "/delete.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Delete.ctrl", method = RequestMethod.GET)
 	public String processDelete(int actno, String page, String category, String searchString) throws UnsupportedEncodingException {
 
 //		response.setContentType("text/html;charset=UTF-8");
@@ -190,16 +190,16 @@ public class CRUDController {
 		// 導回前頁
 		if (category.equals("")) {
 			//URLEncoder.encode中文亂碼解決
-			return  "redirect:/SearchAll.ctrl?page=" + page + "&searchString=" + URLEncoder.encode(searchString,"utf-8");		
+			return  "redirect:/04/CMS/SearchAll.ctrl?page=" + page + "&searchString=" + URLEncoder.encode(searchString,"utf-8");		
 		}
 		else {		
-			return  "redirect:/Category.ctrl?page=" + page + "&category=" + category;
+			return  "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
 		}
 //		return "04/categorySearch";
 		
 	}
 
-	@RequestMapping(path = "/update1.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Update1.ctrl", method = RequestMethod.GET)
 	public String processUpdate(int actno, String page, String category, String searchString, Model model) {
 
 		System.out.println(actno);
@@ -239,7 +239,7 @@ public class CRUDController {
 		return "04/UpdateAction";
 	}
 
-	@RequestMapping(path = "/update2.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Update2.ctrl", method = RequestMethod.GET)
 	public String processUpdate2(int actno, String title, int category, String location, String locationName,
 			String mainunit, String showunit, String description, String startdate, String enddate , String page) {
 
@@ -249,16 +249,16 @@ public class CRUDController {
 		showBeanService.update(actno, title, category, location, locationName, mainunit, showunit,
 				description, startdate2, enddate2);
 
-			return  "redirect:/Category.ctrl?page=" + page + "&category=" + category;
+			return  "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
 	}
 
-	@RequestMapping(path = "/insert", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/insert", method = RequestMethod.GET)
 	public String processUpdate2() {
 
 		return "04/InsertAction";
 	}
 
-	@RequestMapping(path = "/insert.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Insert.ctrl", method = RequestMethod.GET)
 	public String processInsert(String title, int category, String location, String locationName, String mainunit,
 			String showunit, String description,String startdate, String enddate) throws ParseException {
 //		System.out.println("startdate"+startdate);
@@ -283,7 +283,7 @@ public class CRUDController {
 	}
 
 	//分類查詢+分頁
-	@RequestMapping(path = "/Category2.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CMS/Category2.ctrl", method = RequestMethod.GET)
 	public String processCategorySearch2(int category,String p, Model model) {
 
 		// 設定頁數

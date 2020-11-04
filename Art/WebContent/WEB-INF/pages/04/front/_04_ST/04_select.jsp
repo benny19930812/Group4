@@ -33,7 +33,7 @@
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 <div class="container">
 <!-- 頂部按鈕	 -->
-<form method=GET action="SearchAll_.ctrl">
+	<form method=GET action="<c:url value='/04/SearchTo.ctrl?'/>">
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">
@@ -83,7 +83,7 @@
 <p>總筆數:${totalnum}
 每頁筆數:${PerPage}
 總頁數:${totalPages}
-第幾頁:${page}</p>
+目前位於第${page}頁</p>
 
 	<table  class="table table-bordered">
 		<tr>
@@ -125,20 +125,20 @@
 		<div class="btn-group mr-2" role="group" aria-label="First group">
 			<ul class="page">
 				<button type="button" class="btn btn-secondary"
-					onclick="location.href='<c:url value="/SearchAll_.ctrl?page=1&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">首頁</button>
+					onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=1&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">首頁</button>
 
 				<button type="button" class="btn btn-secondary"
-					onclick="location.href='<c:url value="/SearchAll_.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">&laquo;</button>
+					onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">&laquo;</button>
 
 				<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 					<c:set var="active" value="${loop.index==page?'active':''}" />
 					<button type="button" class="btn btn-secondary"
-						onclick="location.href='<c:url value="/SearchAll_.ctrl?page=${loop.index}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">${loop.index}</button>
+						onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${loop.index}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">${loop.index}</button>
 				</c:forEach>
 				<button type="button" class="btn btn-secondary"
-					onclick="location.href='<c:url value="/SearchAll_.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">&raquo;</button>
+					onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">&raquo;</button>
 				<button type="button" class="btn btn-secondary"
-					onclick="location.href='<c:url value="/SearchAll_.ctrl?page=${totalPages}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">最後頁</button>
+					onclick="location.href='<c:url value="/04/SearchTo.ctrl?page=${totalPages}&searchString=${searchString}&category=${category}&site=${site}&startdate=${startdate}&enddate=${enddate}"/>'">最後頁</button>
 		</div>
 		
 

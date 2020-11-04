@@ -38,12 +38,13 @@
 	<div class="container">
 
 		<h1>後臺管理系統</h1>
-			<form method="GET" action="SearchAll.ctrl">
+			<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>">
 			<input type=TEXT name="searchString" class="" placeholder=""
 				id="search"> <input type=SUBMIT value="查詢" class=""
 				id="searchbut"><br><br>
 			</form>
-			<button type="button" class="btn btn-info" value="button" onclick="location.href='insert'">新增活動</button>
+			<button type="button" class="btn btn-info" value="button"
+				onclick="location.href='<c:url value='/04/CMS/insert'/>'">新增活動</button>
 			
 			<c:set var="totalnum" value="${requestScope.totalnum}" />
 			<c:set var="PerPage" value="${requestScope.PerPage}" />
@@ -55,7 +56,7 @@
 
 			<p>總筆數:${totalnum} 每頁筆數:${PerPage} 總頁數:${totalPages} 第幾頁:${page}</p>
 			<!-- 頂部按鈕	 -->
-			<form method="GET" action="Category.ctrl">
+			<form method=GET action="<c:url value='/04/CMS/Category.ctrl'/>">
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">
@@ -101,7 +102,7 @@
 						<td>${show.title}</td>
 						<td>${show.site}</td>
 
-						<form name="order" action="update1.ctrl" method="get">
+						<form name="order" action="<c:url value='/04/CMS/Update1.ctrl'/>" method="get">
 							<td>
 								<button name="" type="submit" value="" class="btn btn-info">修改</button>
 							</td>
@@ -111,7 +112,7 @@
 							<Input type='hidden' name='searchString' value='${searchString}'>
 						</form>
 
-						<form name="order" action="delete.ctrl"  method="get">
+											<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get">
 							<td>
 								<button name="actno" type="submit" value=${show.no
 									} class="btn btn-info" onclick="return del()">刪除</button></td>
@@ -139,20 +140,20 @@
 				<div class="btn-group mr-2" role="group" aria-label="First group">
 					<ul class="page">
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/SearchAll.ctrl?page=1&searchString=${searchString}"/>'">首頁</button>
+							onclick="location.href='<c:url value="/04/CMS/SearchAll.ctrl?page=1&searchString=${searchString}"/>'">首頁</button>
 
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/SearchAll.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}"/>'">&laquo;</button>
+							onclick="location.href='<c:url value="/04/CMS/SearchAll.ctrl?page=${page-1>1?page-1:1}&searchString=${searchString}"/>'">&laquo;</button>
 
 						<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 							<c:set var="active" value="${loop.index==page?'active':''}" />
 							<button type="button" class="btn btn-secondary"
-								onclick="location.href='<c:url value="/SearchAll.ctrl?page=${loop.index}&searchString=${searchString}"/>'">${loop.index}</button>
+								onclick="location.href='<c:url value="/04/CMS/SearchAll.ctrl?page=${loop.index}&searchString=${searchString}"/>'">${loop.index}</button>
 						</c:forEach>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/SearchAll.ctrl?page=${page+1<totalPages?page+1:totalPages}&searchString=${searchString}"/>'">&raquo;</button>
+							onclick="location.href='<c:url value="/04/CMS/SearchAll.ctrl?page=${page+1<totalPages?page+1:totalPages}&searchString=${searchString}"/>'">&raquo;</button>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/SearchAll.ctrl?page=${totalPages}&searchString=${searchString}"/>'">最後頁</button>
+							onclick="location.href='<c:url value="/04/CMS/SearchAll.ctrl?page=${totalPages}&searchString=${searchString}"/>'">最後頁</button>
 				</div>
 
 			</div>

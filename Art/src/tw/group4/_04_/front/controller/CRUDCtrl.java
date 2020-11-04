@@ -44,7 +44,7 @@ public class CRUDCtrl {
 	// @SessionAttributes(names = {"name"})可以將參數設為session
 	// Action導到的名稱
 	
-	@RequestMapping(path = "/SearchAll_.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/SearchTo.ctrl", method = RequestMethod.GET)
 	public String processSearchAll(String searchString, String page,String site,String category,String startdate,String enddate ,Model model) throws ParseException {
 
 		
@@ -72,13 +72,12 @@ public class CRUDCtrl {
 			
 		}
 
-
 		return "04/SearchAll";
 	}
 	
 	
 	//模糊查詢
-	@RequestMapping(path = "/SearchAll_Front.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/AllSearch.ctrl", method = RequestMethod.GET)
 	public String processSearchString(String searchString, String page, Model model) {
 
 		System.out.println("searchString=" + searchString);
@@ -148,7 +147,7 @@ public class CRUDCtrl {
 		return "04/front/_04_ST/04_select";
 	}
 	//分類查詢
-	@RequestMapping(path = "/Category_Front.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/CategorySearch.ctrl", method = RequestMethod.GET)
 	public String processCategorySearch(String category, String page, Model model) {
 
 		System.out.println("category=" + category);
@@ -220,7 +219,7 @@ public class CRUDCtrl {
 	}
 	
 	//開始日期查詢
-	@RequestMapping(path = "/StartDateSearch.ctrl", method = RequestMethod.GET)
+	@RequestMapping(path = "/04/StartDateSearch.ctrl", method = RequestMethod.GET)
 	public String processStartDateSearch(String page,String startdate ,Model model) throws ParseException {
 
 		System.out.println("startdate=" + startdate);
@@ -313,7 +312,7 @@ public class CRUDCtrl {
 	
 	
 	//結束日期查詢
-		@RequestMapping(path = "/EndDateSearch.ctrl", method = RequestMethod.GET)
+		@RequestMapping(path = "/04/EndDateSearch.ctrl", method = RequestMethod.GET)
 		public String processEndDateSearch(String page,String enddate ,Model model) throws ParseException {
 
 			List<Map> list = new ArrayList<Map>();
@@ -398,5 +397,8 @@ public class CRUDCtrl {
 
 			return "04/front/_04_ST/04_select";
 		}
+		
+		
+		
 
 }

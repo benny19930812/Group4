@@ -39,13 +39,14 @@
 		<br>
 		<br>
 		<h1>後臺管理系統:修改活動資訊</h1>
-<%-- 		<form method=GET action="<c:url value='/SearchAll'/>"> --%>
-		<form method=GET action="SearchAll.ctrl">
+
+		<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>">
 <%-- 			<Input type='hidden' name='page' value='${page}'> --%>
 			<input type=TEXT name="searchString" class="" placeholder=""id="search"> 
 			<input type=SUBMIT value="查詢" class="btn btn-info" id="searchbut"><br><br>
 			</form>
-			<button type="button" class="btn btn-info" value="button" onclick="location.href='insert'">新增活動</button>
+			<button type="button" class="btn btn-info" value="button"
+				onclick="location.href='<c:url value='/04/CMS/insert'/>'">新增活動</button>
 			
 			<c:set var="totalnum" value="${requestScope.totalnum}" />
 			<c:set var="PerPage" value="${requestScope.PerPage}" />
@@ -57,7 +58,8 @@
 
 			<p>總筆數:${totalnum} 每頁筆數:${PerPage} 總頁數:${totalPages} 目前在第${page}頁</p>
 			<!-- 頂部按鈕	 -->
-			<form method=GET action="Category.ctrl">
+			<form method=GET action="<c:url value='/04/CMS/Category.ctrl'/>">
+<!-- 			<form method=GET action="04/CMS/Category.ctrl"> -->
 				<br>
 				<!-- 隱藏屬性 用來傳遞頁數 -->
 				<input type="hidden" name="page" value="">
@@ -104,7 +106,8 @@
 						<td>${show.site}</td>
 
 							<td>
-						<form name="order" action="update1.ctrl" method="get">
+<!-- 						<form name="order" action="/04/CMS/update1.ctrl" method="get"> -->
+						<form name="order" action="<c:url value='/04/CMS/Update1.ctrl'/>" method="get">
 								<button name="" type="submit" value="" class="btn btn-info">修改</button>
 							<!-- 這些隱藏欄位都會送到後端 -->
 							<Input type='hidden' name='actno' value="${show.no}">
@@ -114,7 +117,8 @@
 							</td>
 
 						<td>
-						<form name="order" action="delete.ctrl" method="get">
+<!-- 						<form name="order" action="/04/CMS/delete.ctrl" method="get"> -->
+						<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get">
 								<button name="actno" type="submit" value=${show.no
 									} class="btn btn-info" onclick="return del()">刪除</button>
 							<!-- 這些隱藏欄位都會送到後端 -->
@@ -140,20 +144,20 @@
 				<div class="btn-group mr-2" role="group" aria-label="First group">
 					<ul class="page">
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/Category.ctrl?page=1&category=${category}"/>'">首頁</button>
+							onclick="location.href='<c:url value="/04/CMS/Category.ctrl?page=1&category=${category}"/>'">首頁</button>
  
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/Category.ctrl?page=${page-1>1?page-1:1}&category=${category}"/>'">&laquo;</button>
+							onclick="location.href='<c:url value="/04/CMS/Category.ctrl?page=${page-1>1?page-1:1}&category=${category}"/>'">&laquo;</button>
 
 						<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 							<c:set var="active" value="${loop.index==page?'active':''}" />
 							<button type="button" class="btn btn-secondary"
-								onclick="location.href='<c:url value="/Category.ctrl?page=${loop.index}&category=${category}"/>'">${loop.index}</button>
+								onclick="location.href='<c:url value="/04/CMS/Category.ctrl?page=${loop.index}&category=${category}"/>'">${loop.index}</button>
 						</c:forEach>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/Category.ctrl?page=${page+1<totalPages?page+1:totalPages}&category=${category}"/>'">&raquo;</button>
+							onclick="location.href='<c:url value="/04/CMS/Category.ctrl?page=${page+1<totalPages?page+1:totalPages}&category=${category}"/>'">&raquo;</button>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='<c:url value="/Category.ctrl?page=${totalPages}&category=${category}"/>'">最後頁</button>
+							onclick="location.href='<c:url value="/04/CMS/Category.ctrl?page=${totalPages}&category=${category}"/>'">最後頁</button>
 				</div>
 
 			</div>
