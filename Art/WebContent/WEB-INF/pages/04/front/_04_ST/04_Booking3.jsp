@@ -37,7 +37,7 @@
 
 <body>
 
-<jsp:include page="/fragment/top.jsp" />
+
 <div class="container">
 <form name="order2" action="<c:url value='/_04_Orderlist/OrderlistServlet'/> " method="post">
 <c:set var="name" value="${param.name}" scope="session"/> 

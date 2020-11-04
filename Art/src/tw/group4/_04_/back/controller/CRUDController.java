@@ -179,7 +179,8 @@ public class CRUDController {
 	}
 
 	@RequestMapping(path = "/04/CMS/Delete.ctrl", method = RequestMethod.GET)
-	public String processDelete(int actno, String page, String category, String searchString) throws UnsupportedEncodingException {
+	public String processDelete(int actno, String page, String category, String searchString)
+			throws UnsupportedEncodingException {
 
 //		response.setContentType("text/html;charset=UTF-8");
 		System.out.println(actno);
@@ -189,14 +190,14 @@ public class CRUDController {
 
 		// 導回前頁
 		if (category.equals("")) {
-			//URLEncoder.encode中文亂碼解決
-			return  "redirect:/04/CMS/SearchAll.ctrl?page=" + page + "&searchString=" + URLEncoder.encode(searchString,"utf-8");		
-		}
-		else {		
-			return  "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
+			// URLEncoder.encode中文亂碼解決
+			return "redirect:/04/CMS/SearchAll.ctrl?page=" + page + "&searchString="
+					+ URLEncoder.encode(searchString, "utf-8");
+		} else {
+			return "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
 		}
 //		return "04/categorySearch";
-		
+
 	}
 
 	@RequestMapping(path = "/04/CMS/Update1.ctrl", method = RequestMethod.GET)
@@ -217,12 +218,12 @@ public class CRUDController {
 		String mainunit = showBean.getACT_MAINUNIT();
 		String showunit = showBean.getACT_SHOWUNIT();
 		String description = showBean.getACT_DESCRIPTION();
-		String startdate = showBean.getACT_STARTDATE();		
+		String startdate = showBean.getACT_STARTDATE();
 		String enddate = showBean.getACT_ENDDATE();
-		//將DB 日期字串由yyyy/mm/dd改為yyyy-mm-dd
-		String startdate2 =startdate.replace("/","-");
-		String enddate2 =enddate.replace("/","-");
-		
+		// 將DB 日期字串由yyyy/mm/dd改為yyyy-mm-dd
+		String startdate2 = startdate.replace("/", "-");
+		String enddate2 = enddate.replace("/", "-");
+
 		model.addAttribute("actno", actno);
 		model.addAttribute("title", title);
 		model.addAttribute("category", category2);
@@ -241,15 +242,15 @@ public class CRUDController {
 
 	@RequestMapping(path = "/04/CMS/Update2.ctrl", method = RequestMethod.GET)
 	public String processUpdate2(int actno, String title, int category, String location, String locationName,
-			String mainunit, String showunit, String description, String startdate, String enddate , String page) {
+			String mainunit, String showunit, String description, String startdate, String enddate, String page) {
 
-		String startdate2 =startdate.replace("-", "/");
-		String enddate2 =enddate.replace("-", "/");
-		
-		showBeanService.update(actno, title, category, location, locationName, mainunit, showunit,
-				description, startdate2, enddate2);
+		String startdate2 = startdate.replace("-", "/");
+		String enddate2 = enddate.replace("-", "/");
 
-			return  "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
+		showBeanService.update(actno, title, category, location, locationName, mainunit, showunit, description,
+				startdate2, enddate2);
+
+		return "redirect:/04/CMS/Category.ctrl?page=" + page + "&category=" + category;
 	}
 
 	@RequestMapping(path = "/04/CMS/insert", method = RequestMethod.GET)
@@ -260,13 +261,12 @@ public class CRUDController {
 
 	@RequestMapping(path = "/04/CMS/Insert.ctrl", method = RequestMethod.GET)
 	public String processInsert(String title, int category, String location, String locationName, String mainunit,
-			String showunit, String description,String startdate, String enddate) throws ParseException {
+			String showunit, String description, String startdate, String enddate) throws ParseException {
 //		System.out.println("startdate"+startdate);
-		String startdate2 =startdate.replace("-", "/");
-		String enddate2 =enddate.replace("-", "/");
+		String startdate2 = startdate.replace("-", "/");
+		String enddate2 = enddate.replace("-", "/");
 //		System.out.println(startdate2);
-		
-		
+
 		showBean.setACT_TITLE(title);
 		showBean.setACT_CATEGORY(category);
 		showBean.setACT_LOCATION(location);
@@ -282,9 +282,9 @@ public class CRUDController {
 		return "04/categorySearch";
 	}
 
-	//分類查詢+分頁
+	// 分類查詢+分頁
 	@RequestMapping(path = "/04/CMS/Category2.ctrl", method = RequestMethod.GET)
-	public String processCategorySearch2(int category,String p, Model model) {
+	public String processCategorySearch2(int category, String p, Model model) {
 
 		// 設定頁數
 

@@ -58,7 +58,7 @@
 </head>
 <BODY>
 <c:set var="funcName" value="IND" scope="session"/>        
-<jsp:include page="/fragment/top.jsp" />
+<%-- <jsp:include page="/fragment/top.jsp" /> --%>
 <div class="container">
 <form method=GET action="./SearchServlet" > 
 <br>

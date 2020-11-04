@@ -44,7 +44,7 @@ td {
 </head>
 
 <body>
-	<jsp:include page="/fragment/top.jsp" />
+<%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 <div class="container">
 	<form name="order"
 		action="<c:url value='/_04_ShopCart/ShopCartServlet'/>" method="post">

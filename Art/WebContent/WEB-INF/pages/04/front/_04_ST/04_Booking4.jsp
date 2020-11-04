@@ -41,7 +41,7 @@
 <body>
 <form name="order2" action="<c:url value='/_04_ST/04_Booking3.jsp'/> " method="get">
 
-<jsp:include page="/_04_ST/04_topbar.jsp" />
+
 <c:set var="name" value="${param.name}" scope="session"/> 
 <c:set var="email" value="${param.email}" scope="session"/> 
 <c:set var="tel" value="${param.tel}" scope="session"/> 

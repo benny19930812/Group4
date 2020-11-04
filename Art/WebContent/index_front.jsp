@@ -75,11 +75,11 @@
 		<form method=GET action="<c:url value='/04/SearchTo.ctrl'/>">
 			<br>
 			<!-- 隱藏屬性 用來傳遞頁數 -->
-			<input type="hidden" name="page" value=""> <input
-				type="hidden" name="site" value=""> <input type="hidden"
-				name="startdate" value=""> <input type="hidden"
-				name="enddate" value=""> <input type="hidden"
-				name="searchString" value="">
+			<input type="hidden" name="page" value=""> 
+			<input type="hidden" name="site" value=""> 
+			<input type="hidden"name="startdate" value=""> 
+			<input type="hidden"name="enddate" value=""> 
+			<input type="hidden"name="searchString" value="">
 
 			<button name="category" type="submit" value="1" class="btn btn-info">音樂</button>
 			<button name="category" type="submit" value="2" class="btn btn-info">戲劇</button>
@@ -104,7 +104,7 @@
 		<div class="form-group">
 			<div class="bodydiv">
 
-				<img src="<c:url value='./images/logo.jpg'/> " alt="logo" title="logo" class="logo"><br>
+				<img src="<c:url value='/images/04/logo.jpg'/> " alt="logo" title="logo" class="logo"><br>
 
 				<form method=GET action="<c:url value='/04/SearchTo.ctrl'/>">
 
