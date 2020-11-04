@@ -14,22 +14,32 @@
 	border-color:#FFFFFF;
 
 }
+.sofa2 {
+	width: 60px;
+	
+
+}
 </style>
 </head>
 <body>
 <h1>座位表</h1>
+1. 請勾選座位
+請在灰色空位上點選您要的位置
+
+
 	<table>
 		<tr>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
-			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa"></td>
+			
 		</tr>
 		<tr>
 			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
@@ -67,6 +77,14 @@
 			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
 			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa"></td>
 		</tr>
+	</table>
+	<br><br>
+	<table>
+	<tr>
+			<td><img src="images/04/sofaOff.png" alt="" title="" class="sofa2">空位</td>
+			<td><img src="images/04/sofa.png" alt="" title="" class="sofa2">已售出</td>
+			<td><img src="images/04/sofaTick.png" alt="" title="" class="sofa2">已加入購物車</td>
+	</tr>
 	</table>
 <script
   src="https://code.jquery.com/jquery-3.5.1.js"
