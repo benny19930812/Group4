@@ -73,12 +73,21 @@ public class ShowBeanDAO {
 		return list;
 	}
 	
-	// 查詢多筆//日期排序
+	// 查詢多筆 開始日期排序
 		public List<ShowBean> selectAll_startdate() {
 			// "From ShowBean"為createQuery
 			//
 			Session session = sessionFacory.getCurrentSession();
 			Query<ShowBean> query = session.createQuery("From ShowBean SB ORDER BY SB.ACT_STARTDATE", ShowBean.class);
+			List<ShowBean> list = query.list();
+			return list;
+		}
+		// 查詢多筆 結束日期排序
+		public List<ShowBean> selectAll_enddate() {
+			// "From ShowBean"為createQuery
+			//
+			Session session = sessionFacory.getCurrentSession();
+			Query<ShowBean> query = session.createQuery("From ShowBean SB ORDER BY SB.ACT_ENDDATE", ShowBean.class);
 			List<ShowBean> list = query.list();
 			return list;
 		}

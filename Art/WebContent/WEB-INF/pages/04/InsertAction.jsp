@@ -92,11 +92,11 @@
 				</tr>
 				<tr>
 					<td>活動開始日</td>
-					<td><input type="date" name="startdate" required="required"></td>
+					<td><input type="date" name="startdate"  required="required" id="startdate"></td>
 				</tr>
 				<tr>
 					<td>活動結束日</td>
-					<td><input type="date" name="enddate" required="required"></td>
+					<td><input type="date" name="enddate" required="required" id="enddate"></td>
 				</tr>
 				<tr>
 					<td>活動描述</td>
@@ -127,27 +127,11 @@
 			}
 		}
 
-		// 		function readURL(input){
-
-		// 			  if(input.files && input.files[0]){
-
-		// 			    var imageTagID = input.getAttribute("targetID");
-
-		// 			    var reader = new FileReader();
-
-		// 			    reader.onload = function (e) {
-
-		// 			       var img = document.getElementById(imageTagID);
-
-		// 			       img.setAttribute("src", e.target.result)
-
-		// 			    }
-
-		// 			    reader.readAsDataURL(input.files[0]);
-
-		// 			  }
-
-		// 			}
+		document.getElementById("startdate").onchange = function () {
+		    var input = document.getElementById("enddate");
+		    input.setAttribute("min", this.value);
+		}
+		
 	</script>
 </body>
 </html>
