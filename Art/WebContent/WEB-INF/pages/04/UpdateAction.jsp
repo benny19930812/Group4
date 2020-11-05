@@ -6,13 +6,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+p{
+/*  自動換行  */
+white-space:pre-wrap;
+}
+</style>
 </head>
+
 <body>
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 		<br>
 		<br>
 	<h1>活動修改</h1>
-	<form method=GET action="<c:url value='update2.ctrl'/>">
+	<form method=GET action="<c:url value='Update2.ctrl'/>">
 
 		<div class="container">
 			<p></p>
@@ -111,6 +118,7 @@
 					<td><textarea rows="8" cols="" name="description" >${requestScope.description}</textarea>
 					</td>
 				</tr>
+				
 			</table>
 
 			<input type="submit" value="送出修改" name=""

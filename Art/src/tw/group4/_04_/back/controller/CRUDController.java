@@ -261,7 +261,7 @@ public class CRUDController {
 
 	@RequestMapping(path = "/04/CMS/Insert.ctrl", method = RequestMethod.GET)
 	public String processInsert(String title, int category, String location, String locationName, String mainunit,
-			String showunit, String description, String startdate, String enddate) throws ParseException {
+			String showunit, String description, String startdate, String enddate)  {
 //		System.out.println("startdate"+startdate);
 		String startdate2 = startdate.replace("-", "/");
 		String enddate2 = enddate.replace("-", "/");
@@ -278,8 +278,9 @@ public class CRUDController {
 		showBean.setACT_ENDDATE(enddate2);
 
 		showBeanService.insert(showBean);
-
+		System.out.println("已成功新增一筆");
 		return "04/categorySearch";
+//		return "redirect:/04/CMS/Category.ctrl?page=&category=" + category;
 	}
 
 	// 分類查詢+分頁
