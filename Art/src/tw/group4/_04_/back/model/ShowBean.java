@@ -35,6 +35,7 @@ public class ShowBean implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //primary key的產生方式 有auto、IDENTITY	 
 	@Column(name = "ACT_NO")
 	private int ACT_NO;
+//	private Integer ACT_NO;
 	
 	@Column(name = "ACT_TITLE")
 	private String ACT_TITLE;

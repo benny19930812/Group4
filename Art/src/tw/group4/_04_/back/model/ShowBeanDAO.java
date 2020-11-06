@@ -57,9 +57,9 @@ public class ShowBeanDAO {
 	}
 
 	// 查詢
-	public ShowBean select(int actid) {
+	public ShowBean select(int actno) {
 		Session session = sessionFacory.getCurrentSession();
-		return session.get(ShowBean.class, actid);
+		return session.get(ShowBean.class, actno);
 	}
 
 	// 查詢多筆
@@ -189,10 +189,10 @@ public class ShowBeanDAO {
 	}
 
 	// 刪除
-	public boolean delete(int actid) {
+	public boolean delete(int actno) {
 
 		Session session = sessionFacory.getCurrentSession();
-		ShowBean result = session.get(ShowBean.class, actid);
+		ShowBean result = session.get(ShowBean.class, actno);
 
 		if (result != null) {
 			session.delete(result);

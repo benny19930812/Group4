@@ -279,8 +279,8 @@ public class CRUDController {
 
 		showBeanService.insert(showBean);
 		System.out.println("已成功新增一筆");
-		return "04/categorySearch";
-//		return "redirect:/04/CMS/Category.ctrl?page=&category=" + category;
+//		return "04/categorySearch";
+		return "redirect:/04/CMS/Category.ctrl?page=&category=" + category;
 	}
 
 	// 分類查詢+分頁
