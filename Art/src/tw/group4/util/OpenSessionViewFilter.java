@@ -9,14 +9,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-@WebFilter("/*")
 public class OpenSessionViewFilter implements Filter {
 	
 	private WebApplicationContext context;
@@ -28,7 +26,6 @@ public class OpenSessionViewFilter implements Filter {
 		ServletContext application = config.getServletContext();
 		context = WebApplicationContextUtils.getWebApplicationContext(application);
 		sessionFactory = (SessionFactory)context.getBean("sessionFactory");
-		System.out.println("get sessionFactory");
 	}
 	
 	@Override

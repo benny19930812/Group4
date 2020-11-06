@@ -11,10 +11,11 @@
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 		<br>
 		<br>
-	<h1>活動新增</h1>
 	<form method=GET action="<c:url value='/04/CMS/Insert.ctrl'/>">
 
 		<div class="container">
+		<div class="form-group">
+	<h1>活動新增</h1>
 			<p></p>
 			<table class="table table-bordered">
 				<!-- 				<tr> -->
@@ -23,11 +24,11 @@
 				<!-- 				</tr> -->
 				<tr>
 					<td>標題</td>
-					<td><input type="text" name="title" required="required"></td>
+					<td><input type="text" name="title" required="required" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>分類</td>
-					<td><select id="category" class="" name="category">
+					<td><select id="category" class="form-control" name="category"  >
 							<option value="15" selected>選擇分類</option>
 							<option value="1">音樂</option>
 							<option value="2">戲劇</option>
@@ -48,7 +49,7 @@
 				</tr>
 				<tr>
 					<td>縣市名</td>
-					<td><select id="site" class="" name="location">
+					<td><select id="site"  name="location" class="form-control" >
 							<option value="台北" selected>選擇地區</option>
 							<option value="">==北部地區==</option>
 							<option value="基隆">基隆</option>
@@ -76,7 +77,7 @@
 				</tr>
 				<tr>
 					<td>地點</td>
-					<td><input type="text" name="locationName" required="required"></td>
+					<td><input type="text" name="locationName" required="required" class="form-control" ></td>
 				</tr>
 				<!-- 				<tr> -->
 				<!-- 					<td>活動開始日</td> -->
@@ -84,29 +85,26 @@
 				<!-- 				</tr> -->
 				<tr>
 					<td>主辦單位</td>
-					<td><input type="text" name="mainunit" required="required"></td>
+					<td><input type="text" name="mainunit" required="required" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>演出單位</td>
-					<td><input type="text" name="showunit" required="required"></td>
+					<td><input type="text" name="showunit" required="required" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動開始日</td>
-					<td><input type="date" name="startdate"  required="required" id="startdate"></td>
+					<td><input type="date" name="startdate"  required="required" id="startdate" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動結束日</td>
-					<td><input type="date" name="enddate" required="required" id="enddate"></td>
+					<td><input type="date" name="enddate" required="required" id="enddate" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動描述</td>
 					<td><textarea rows="8" cols="" name="description"
-							required="required"></textarea></td>
+							required="required" class="form-control" ></textarea></td>
 				</tr>
-<!-- 				<tr> -->
-<!-- 					<td><input name="photo" type="file" id="imgInp" -->
-<!-- 						accept="image/gif, image/jpeg, image/png"/ ></td> -->
-<!-- 				</tr> -->
+
 			</table>
 
 			<input type="submit" value="送出新增" name=""
@@ -115,6 +113,7 @@
 
 
 	</form>
+	</div>
 	</div>
 
 	<script>

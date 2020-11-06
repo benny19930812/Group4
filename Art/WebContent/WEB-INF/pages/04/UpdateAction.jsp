@@ -18,10 +18,10 @@ white-space:pre-wrap;
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 		<br>
 		<br>
-	<h1>活動修改</h1>
 	<form method=GET action="<c:url value='Update2.ctrl'/>">
-
+<div class="form-group">
 		<div class="container">
+	<h1>活動修改</h1>
 			<p></p>
 			<table class="table table-bordered">
 <!-- 				<tr> -->
@@ -38,11 +38,11 @@ white-space:pre-wrap;
 				</tr>
 				<tr>			
 					<td>標題</td>
-					<td><input type="text" name="title" value="${requestScope.title}"></td>
+					<td><input type="text" name="title" value="${requestScope.title}" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>分類</td>
-					<td><select id="category" class="" name="category">
+					<td><select id="category" class="form-control"  name="category">
 							<option value="${requestScope.category}" selected>選擇分類</option>
 							<option value="1">音樂</option>
 							<option value="2">戲劇</option>
@@ -63,7 +63,7 @@ white-space:pre-wrap;
 				</tr>
 				<tr>
 					<td>縣市名</td>
-					<td><select id="site" class="" name="location" value="${requestScope.location}">
+					<td><select id="site" class="form-control"  name="location" value="${requestScope.location}">
 							<option value="${requestScope.location}" selected>選擇縣市</option>
 							<option value="">==北部地區==</option>
 							<option value="基隆">基隆</option>
@@ -91,7 +91,7 @@ white-space:pre-wrap;
 				</tr>
 				<tr>
 					<td>地點</td>
-					<td><input type="text" name="locationName" value="${requestScope.locationName}"></td>
+					<td><input type="text" name="locationName" value="${requestScope.locationName}" class="form-control" ></td>
 				</tr>
 <!-- 				<tr> -->
 <!-- 					<td>活動開始日</td> -->
@@ -99,23 +99,23 @@ white-space:pre-wrap;
 <!-- 				</tr> -->
 				<tr>
 					<td>主辦單位</td>
-					<td><input type="text" name="mainunit" value="${requestScope.mainunit}"></td>
+					<td><input type="text" name="mainunit" value="${requestScope.mainunit}" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>演出單位</td>
-					<td><input type="text" name="showunit" value="${requestScope.showunit}"></td>
+					<td><input type="text" name="showunit" value="${requestScope.showunit}" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動開始日</td>
-					<td><input type="date" name="startdate" value="${requestScope.startdate}" id="startdate"></td>
+					<td><input type="date" name="startdate" value="${requestScope.startdate}" id="startdate" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動結束日</td>
-					<td><input type="date" name="enddate" value="${requestScope.enddate}" id="enddate"></td>
+					<td><input type="date" name="enddate" value="${requestScope.enddate}" id="enddate" class="form-control" ></td>
 				</tr>
 				<tr>
 					<td>活動描述</td>
-					<td><textarea rows="8" cols="" name="description" >${requestScope.description}</textarea>
+					<td><textarea rows="8" cols="" name="description"  class="form-control" >${requestScope.description}</textarea>
 					</td>
 				</tr>
 				
@@ -123,8 +123,9 @@ white-space:pre-wrap;
 
 			<input type="submit" value="送出修改" name=""
 				class="btn btn-outline-info" id="" onclick="return update()">
-	</form>
 	</div>
+	</div>
+	</form>
 	
 	
 		<script>

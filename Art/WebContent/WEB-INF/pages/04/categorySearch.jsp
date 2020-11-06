@@ -13,7 +13,7 @@
 }
 
 .no {
-	width: 30px;
+	width: 40px;
 }
 
 .title {
@@ -29,8 +29,9 @@
 }
 
 .do {
-	width: 100px;
+	width: 80px;
 }
+
 </style>
 </head>
 <body>
@@ -88,7 +89,10 @@
 					class="btn btn-info">研習課程</button>
 			</form>
 
-			<table class="table table-bordered">
+			<table class="display" id="myTable">
+			<thead>
+			</thead>
+			<tbody>
 				<tr>
 					<th class="no">編號</th>
 					<th class="title">節目名稱</th>
@@ -119,18 +123,27 @@
 						<td>
 <!-- 						<form name="order" action="/04/CMS/delete.ctrl" method="get"> -->
 						<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get">
-								<button name="actno" type="submit" value=${show.no
-									} class="btn btn-info" onclick="return del()">刪除</button>
+								<button name="actno" type="submit" value=${show.no} class="btn btn-info" onclick="return del()">刪除</button>
 							<!-- 這些隱藏欄位都會送到後端 -->
 							<Input type='hidden' name='page' value='${page}'> <Input type='hidden' name='category' value='${category}'>
 						</form>
 						</td>
-
+						
+						<td>
+<%-- 						<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>" method="get"> --%>
+<!-- 								<button name="actno" type="submit" value=${show.no} class="btn btn-info" onclick="return del()">詳ㄒㄧ</button> -->
+<!-- 							這些隱藏欄位都會送到後端 -->
+<%-- 							<Input type='hidden' name='page' value='${page}'> <Input type='hidden' name='category' value='${category}'> --%>
+<!-- 						</form> -->
+						</td>
 						<Input type='hidden' name='page' value='${page}'>
 						<Input type='hidden' name='category' value='${category}'>
 					</tr>
 
 				</c:forEach>
+			</tbody>
+			<tfoot>
+			</tfoot>
 
 
 			</table>
@@ -138,9 +151,9 @@
 
 
 			<!-- 頁數區 -->
-
+			<div class="d-flex justify-content-center">
 			<div class="btn-toolbar" role="toolbar"
-				aria-label="Toolbar with button groups">
+				aria-label="Toolbar with button groups" >
 				<div class="btn-group mr-2" role="group" aria-label="First group">
 					<ul class="page">
 						<button type="button" class="btn btn-secondary"
@@ -162,11 +175,15 @@
 
 			</div>
 	</div>
+	</div>
+
 	<!-- <script src="js\jquery-3.5.1.min.js"></script> -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
-	</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="crossorigin="anonymous"></script>
+ 
+	
+	
 
 	<script>
 		function del() {
@@ -177,6 +194,10 @@
 				return false;
 			}
 		}
+		
+		/* $(document).ready( function () {
+		    $('#myTable').DataTable();
+		} ); */
 	</script>
 
 </body>
