@@ -13,7 +13,7 @@
 }
 
 .no {
-	width: 30px;
+	width: 60px;
 }
 
 .title {
@@ -31,6 +31,9 @@
 .do {
 	width: 100px;
 }
+#search{
+ width: 250px;
+}
 </style>
 </head>
 <body>
@@ -38,13 +41,24 @@
 	<div class="container">
 
 		<h1>後臺管理系統</h1>
-			<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>">
-			<input type=TEXT name="searchString" class="" placeholder=""
-				id="search"> <input type=SUBMIT value="查詢" class=""
-				id="searchbut"><br><br>
-			</form>
-			<button type="button" class="btn btn-info" value="button"
-				onclick="location.href='<c:url value='/04/CMS/insert'/>'">新增活動</button>
+<%-- 			<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>"> --%>
+<!-- 			<input type=TEXT name="searchString"  class="form-control" placeholder=""id="search">  -->
+<!-- 			<input type=SUBMIT value="查詢" class="btn btn-info"id="searchbut"><br><br> -->
+<!-- 			</form> -->
+			
+			<form>
+<form method=GET action="<c:url value='/04/CMS/SearchAll.ctrl'/>">
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+      <input type=TEXT name="searchString"  class="form-control" placeholder=""id="search"> 
+    </div>  
+    <div class="col-sm-3 my-1">
+      <input type=SUBMIT value="查詢" class="btn btn-info" id="searchbut">
+    </div>
+  </div>
+</form>
+			
+			<button type="button" class="btn btn-info" value="button"onclick="location.href='<c:url value='/04/CMS/insert'/>'">新增活動</button>
 			
 			<c:set var="totalnum" value="${requestScope.totalnum}" />
 			<c:set var="PerPage" value="${requestScope.PerPage}" />
